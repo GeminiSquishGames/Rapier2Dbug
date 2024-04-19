@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://dq41xc8n2bsru"]
+[gd_scene load_steps=14 format=3 uid="uid://dq41xc8n2bsru"]
 
 [ext_resource type="Script" path="res://Dummy01.gd" id="1_p1r2v"]
+[ext_resource type="Script" path="res://Dummy02.gd" id="2_x6c8x"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8qisg"]
+friction = 0.87
 rough = true
-bounce = 1.0
+bounce = 0.45
 
 [sub_resource type="Gradient" id="Gradient_7lbu2"]
 interpolation_mode = 1
@@ -45,10 +47,22 @@ fill_to = Vector2(0.919899, 0.201008)
 [sub_resource type="CircleShape2D" id="CircleShape2D_mg2vl"]
 radius = 32.0
 
+[sub_resource type="Gradient" id="Gradient_64hxw"]
+offsets = PackedFloat32Array(0.82234, 0.880851, 0.934042, 1)
+colors = PackedColorArray(0, 0.190394, 1, 1, 0.962415, 0.962415, 0.962415, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ck1d1"]
+gradient = SubResource("Gradient_64hxw")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.919899, 0.201008)
+
 [node name="BoxRing" type="Node2D"]
 position = Vector2(91, 142)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_8qisg")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
@@ -105,14 +119,43 @@ shape = SubResource("RectangleShape2D_kv81y")
 
 [node name="Dummy01" type="RigidBody2D" parent="."]
 position = Vector2(727, 392)
+collision_mask = 3
+continuous_cd = 1
+contact_monitor = true
 script = ExtResource("1_p1r2v")
 
 [node name="Sprite2D" type="Sprite2D" parent="Dummy01"]
 texture = SubResource("GradientTexture2D_a1pef")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Dummy01"]
+position = Vector2(10, 3)
 scale = Vector2(1, 0.1)
 texture = SubResource("GradientTexture2D_4a5dj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dummy01"]
 shape = SubResource("CircleShape2D_mg2vl")
+
+[node name="Dummy02" type="RigidBody2D" parent="."]
+position = Vector2(283, 277)
+continuous_cd = 1
+contact_monitor = true
+script = ExtResource("2_x6c8x")
+
+[node name="Sprite2D" type="Sprite2D" parent="Dummy02"]
+texture = SubResource("GradientTexture2D_a1pef")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Dummy02"]
+position = Vector2(14, 0)
+scale = Vector2(1, 0.1)
+texture = SubResource("GradientTexture2D_ck1d1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dummy02"]
+shape = SubResource("CircleShape2D_mg2vl")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 64.0
+offset_top = -111.0
+offset_right = 263.0
+offset_bottom = -88.0
+text = "Left mouse button to fire.
+"
