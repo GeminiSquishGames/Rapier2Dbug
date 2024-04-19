@@ -1,0 +1,118 @@
+[gd_scene load_steps=11 format=3 uid="uid://dq41xc8n2bsru"]
+
+[ext_resource type="Script" path="res://Dummy01.gd" id="1_p1r2v"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8qisg"]
+rough = true
+bounce = 1.0
+
+[sub_resource type="Gradient" id="Gradient_7lbu2"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.540425)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qo1ca"]
+gradient = SubResource("Gradient_7lbu2")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.285138, 0.311839)
+fill_to = Vector2(0.355667, 0.629219)
+repeat = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kv81y"]
+size = Vector2(208, 224)
+
+[sub_resource type="Gradient" id="Gradient_244oe"]
+offsets = PackedFloat32Array(0, 0.827659, 0.880851, 0.934042, 1)
+colors = PackedColorArray(0.96355, 0.93822, 0.938087, 1, 0.96355, 0.93822, 0.938087, 1, 0.962415, 0.962415, 0.962415, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a1pef"]
+gradient = SubResource("Gradient_244oe")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.919899, 0.201008)
+
+[sub_resource type="Gradient" id="Gradient_xgaec"]
+offsets = PackedFloat32Array(0.82234, 0.880851, 0.934042, 1)
+colors = PackedColorArray(1, 0.16107, 0.156669, 1, 0.962415, 0.962415, 0.962415, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4a5dj"]
+gradient = SubResource("Gradient_xgaec")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.919899, 0.201008)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mg2vl"]
+radius = 32.0
+
+[node name="BoxRing" type="Node2D"]
+position = Vector2(91, 142)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_8qisg")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(2, 320)
+scale = Vector2(0.37065, 4)
+texture = SubResource("GradientTexture2D_qo1ca")
+region_enabled = true
+region_rect = Rect2(-32, -40, 200, 224)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2, 320)
+scale = Vector2(0.37065, 4)
+shape = SubResource("RectangleShape2D_kv81y")
+
+[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(1151, 320)
+scale = Vector2(0.37065, 4)
+texture = SubResource("GradientTexture2D_qo1ca")
+region_enabled = true
+region_rect = Rect2(-32, -40, 200, 224)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1151, 320)
+scale = Vector2(0.37065, 4)
+shape = SubResource("RectangleShape2D_kv81y")
+
+[node name="Sprite2D3" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(576.625, 0.778735)
+rotation = 1.5708
+scale = Vector2(0.2867, 5.0735)
+texture = SubResource("GradientTexture2D_qo1ca")
+region_enabled = true
+region_rect = Rect2(-32, -40, 200, 224)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576.625, 0.778809)
+rotation = 1.5708
+scale = Vector2(0.2867, 5.0735)
+shape = SubResource("RectangleShape2D_kv81y")
+
+[node name="Sprite2D4" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(576.625, 640.779)
+rotation = 1.5708
+scale = Vector2(0.2867, 5.0735)
+texture = SubResource("GradientTexture2D_qo1ca")
+region_enabled = true
+region_rect = Rect2(-32, -40, 200, 224)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576.625, 640.779)
+rotation = 1.5708
+scale = Vector2(0.2867, 5.0735)
+shape = SubResource("RectangleShape2D_kv81y")
+
+[node name="Dummy01" type="RigidBody2D" parent="."]
+position = Vector2(727, 392)
+script = ExtResource("1_p1r2v")
+
+[node name="Sprite2D" type="Sprite2D" parent="Dummy01"]
+texture = SubResource("GradientTexture2D_a1pef")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Dummy01"]
+scale = Vector2(1, 0.1)
+texture = SubResource("GradientTexture2D_4a5dj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dummy01"]
+shape = SubResource("CircleShape2D_mg2vl")
