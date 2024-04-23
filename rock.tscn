@@ -18,13 +18,23 @@ radius = 32.0
 
 [node name="rock" type="RigidBody2D"]
 collision_layer = 256
-collision_mask = 3
+collision_mask = 259
 mass = 100.0
 max_contacts_reported = 1
 contact_monitor = true
 script = ExtResource("1_3jkcd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_wmky3")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(15, 2)
+scale = Vector2(0.3125, 0.3125)
+texture = SubResource("GradientTexture2D_wmky3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-15, -13.2759)
+scale = Vector2(0.25, 0.241379)
 texture = SubResource("GradientTexture2D_wmky3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
