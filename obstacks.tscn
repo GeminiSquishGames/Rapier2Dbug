@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgyfxy64vw1y0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6nhl4"]
+friction = 0.42
+bounce = 1.0
+
+[sub_resource type="Gradient" id="Gradient_7lbu2"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.540425)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qo1ca"]
+gradient = SubResource("Gradient_7lbu2")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.285138, 0.311839)
+fill_to = Vector2(0.355667, 0.629219)
+repeat = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kv81y"]
+size = Vector2(208, 224)
+
+[node name="Obstacks" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_6nhl4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-122, 320)
+scale = Vector2(0.37065, 4)
+texture = SubResource("GradientTexture2D_qo1ca")
+region_enabled = true
+region_rect = Rect2(-32, -40, 200, 224)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-122, 320)
+scale = Vector2(0.37065, 4)
+shape = SubResource("RectangleShape2D_kv81y")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(1810.06, 360)
+scale = Vector2(0.37065, 4)
+texture = SubResource("GradientTexture2D_qo1ca")
+region_enabled = true
+region_rect = Rect2(-32, -40, 200, 224)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(1810.06, 360)
+scale = Vector2(0.37065, 4)
+shape = SubResource("RectangleShape2D_kv81y")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(576.625, 0.778735)
+rotation = 1.5708
+scale = Vector2(0.2867, 5.0735)
+texture = SubResource("GradientTexture2D_qo1ca")
+region_enabled = true
+region_rect = Rect2(-32, -40, 200, 224)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(576.625, 0.778809)
+rotation = 1.5708
+scale = Vector2(0.2867, 5.0735)
+shape = SubResource("RectangleShape2D_kv81y")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(-122.768, 800.672)
+rotation = 1.5708
+scale = Vector2(0.2867, 5.0735)
+texture = SubResource("GradientTexture2D_qo1ca")
+region_enabled = true
+region_rect = Rect2(-32, -40, 200, 224)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(-122.768, 800.672)
+rotation = 1.5708
+scale = Vector2(0.2867, 5.0735)
+shape = SubResource("RectangleShape2D_kv81y")

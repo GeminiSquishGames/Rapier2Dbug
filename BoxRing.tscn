@@ -1,28 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dq41xc8n2bsru"]
+[gd_scene load_steps=16 format=3 uid="uid://dq41xc8n2bsru"]
 
-[ext_resource type="Script" path="res://Dummy01.gd" id="1_p1r2v"]
-[ext_resource type="Script" path="res://Dummy02.gd" id="2_x6c8x"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8qisg"]
-friction = 0.87
-rough = true
-bounce = 0.45
-
-[sub_resource type="Gradient" id="Gradient_7lbu2"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.540425)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_qo1ca"]
-gradient = SubResource("Gradient_7lbu2")
-width = 128
-height = 128
-fill = 1
-fill_from = Vector2(0.285138, 0.311839)
-fill_to = Vector2(0.355667, 0.629219)
-repeat = 1
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kv81y"]
-size = Vector2(208, 224)
+[ext_resource type="PackedScene" uid="uid://dgyfxy64vw1y0" path="res://obstacks.tscn" id="1_6v06s"]
+[ext_resource type="Script" path="res://bob.gd" id="1_p1r2v"]
+[ext_resource type="Script" path="res://player.gd" id="2_x6c8x"]
 
 [sub_resource type="Gradient" id="Gradient_244oe"]
 offsets = PackedFloat32Array(0, 0.827659, 0.880851, 0.934042, 1)
@@ -47,6 +27,16 @@ fill_to = Vector2(0.919899, 0.201008)
 [sub_resource type="CircleShape2D" id="CircleShape2D_mg2vl"]
 radius = 32.0
 
+[sub_resource type="Gradient" id="Gradient_ff18m"]
+offsets = PackedFloat32Array(0, 0.827659, 0.880851, 0.934042, 1)
+colors = PackedColorArray(0.96355, 0.93822, 0.938087, 1, 0.96355, 0.93822, 0.938087, 1, 0.962415, 0.962415, 0.962415, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_we64w"]
+gradient = SubResource("Gradient_ff18m")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.919899, 0.201008)
+
 [sub_resource type="Gradient" id="Gradient_64hxw"]
 offsets = PackedFloat32Array(0.82234, 0.880851, 0.934042, 1)
 colors = PackedColorArray(0, 0.190394, 1, 1, 0.962415, 0.962415, 0.962415, 1, 0, 0, 0, 1, 0, 0, 0, 0)
@@ -57,105 +47,96 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.919899, 0.201008)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_t8iwt"]
+radius = 62.35
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gk5dn"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_04jhm"]
+seamless = true
+noise = SubResource("FastNoiseLite_gk5dn")
+
 [node name="BoxRing" type="Node2D"]
-position = Vector2(91, 142)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 3
+[node name="Obstacks" parent="." instance=ExtResource("1_6v06s")]
+position = Vector2(-274, 138)
+
+[node name="Sprite2D" parent="Obstacks" index="0"]
+position = Vector2(-580.935, -63)
+
+[node name="CollisionShape2D" parent="Obstacks" index="1"]
+position = Vector2(-580.935, -63)
+
+[node name="Sprite2D3" parent="Obstacks" index="4"]
+position = Vector2(1040.23, -574.328)
+
+[node name="CollisionShape2D3" parent="Obstacks" index="5"]
+position = Vector2(1040.23, -574.328)
+
+[node name="Baddie" type="RigidBody2D" parent="."]
 collision_mask = 3
-physics_material_override = SubResource("PhysicsMaterial_8qisg")
-
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(2, 320)
-scale = Vector2(0.37065, 4)
-texture = SubResource("GradientTexture2D_qo1ca")
-region_enabled = true
-region_rect = Rect2(-32, -40, 200, 224)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(2, 320)
-scale = Vector2(0.37065, 4)
-shape = SubResource("RectangleShape2D_kv81y")
-
-[node name="Sprite2D2" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(1151, 320)
-scale = Vector2(0.37065, 4)
-texture = SubResource("GradientTexture2D_qo1ca")
-region_enabled = true
-region_rect = Rect2(-32, -40, 200, 224)
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1151, 320)
-scale = Vector2(0.37065, 4)
-shape = SubResource("RectangleShape2D_kv81y")
-
-[node name="Sprite2D3" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(576.625, 0.778735)
-rotation = 1.5708
-scale = Vector2(0.2867, 5.0735)
-texture = SubResource("GradientTexture2D_qo1ca")
-region_enabled = true
-region_rect = Rect2(-32, -40, 200, 224)
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(576.625, 0.778809)
-rotation = 1.5708
-scale = Vector2(0.2867, 5.0735)
-shape = SubResource("RectangleShape2D_kv81y")
-
-[node name="Sprite2D4" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(576.625, 640.779)
-rotation = 1.5708
-scale = Vector2(0.2867, 5.0735)
-texture = SubResource("GradientTexture2D_qo1ca")
-region_enabled = true
-region_rect = Rect2(-32, -40, 200, 224)
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(576.625, 640.779)
-rotation = 1.5708
-scale = Vector2(0.2867, 5.0735)
-shape = SubResource("RectangleShape2D_kv81y")
-
-[node name="Dummy01" type="RigidBody2D" parent="."]
-position = Vector2(727, 392)
-collision_mask = 3
+mass = 100.0
 continuous_cd = 1
 contact_monitor = true
 script = ExtResource("1_p1r2v")
 
-[node name="Sprite2D" type="Sprite2D" parent="Dummy01"]
+[node name="Sprite2D" type="Sprite2D" parent="Baddie"]
 texture = SubResource("GradientTexture2D_a1pef")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Dummy01"]
+[node name="Sprite2D2" type="Sprite2D" parent="Baddie"]
 position = Vector2(10, 3)
 scale = Vector2(1, 0.1)
 texture = SubResource("GradientTexture2D_4a5dj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Dummy01"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Baddie"]
 shape = SubResource("CircleShape2D_mg2vl")
 
-[node name="Dummy02" type="RigidBody2D" parent="."]
+[node name="Player" type="RigidBody2D" parent="."]
 position = Vector2(283, 277)
 continuous_cd = 1
 contact_monitor = true
 script = ExtResource("2_x6c8x")
 
-[node name="Sprite2D" type="Sprite2D" parent="Dummy02"]
-texture = SubResource("GradientTexture2D_a1pef")
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = SubResource("GradientTexture2D_we64w")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Dummy02"]
+[node name="Sprite2D2" type="Sprite2D" parent="Player"]
 position = Vector2(14, 0)
 scale = Vector2(1, 0.1)
 texture = SubResource("GradientTexture2D_ck1d1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Dummy02"]
-shape = SubResource("CircleShape2D_mg2vl")
+[node name="Body" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_t8iwt")
+
+[node name="Shield" type="CollisionShape2D" parent="Player"]
+visible = false
+shape = SubResource("CircleShape2D_t8iwt")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
 
 [node name="Label" type="Label" parent="."]
-offset_left = 64.0
-offset_top = -111.0
-offset_right = 263.0
-offset_bottom = -88.0
+offset_left = -35.0
+offset_top = 53.0
+offset_right = 164.0
+offset_bottom = 76.0
 text = "Left mouse button to fire.
-"
+W forward thrust"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(91, 135)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_repeat = 2
+position = Vector2(475, -475)
+scale = Vector2(2.85547, 2.85547)
+texture = SubResource("NoiseTexture2D_04jhm")
+region_enabled = true
+region_rect = Rect2(-400, -296, 1344, 1176)
+metadata/_edit_lock_ = true
+
+[editable path="Obstacks"]

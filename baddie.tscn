@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6rvy76ak2kpy"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_oauma"]
+
+[sub_resource type="Gradient" id="Gradient_244oe"]
+offsets = PackedFloat32Array(0, 0.827659, 0.880851, 0.934042, 1)
+colors = PackedColorArray(0.96355, 0.93822, 0.938087, 1, 0.96355, 0.93822, 0.938087, 1, 0.962415, 0.962415, 0.962415, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a1pef"]
+gradient = SubResource("Gradient_244oe")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.919899, 0.201008)
+
+[sub_resource type="Gradient" id="Gradient_64hxw"]
+offsets = PackedFloat32Array(0.82234, 0.880851, 0.934042, 1)
+colors = PackedColorArray(0, 0.190394, 1, 1, 0.962415, 0.962415, 0.962415, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ck1d1"]
+gradient = SubResource("Gradient_64hxw")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.919899, 0.201008)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mg2vl"]
+radius = 32.0
+
+[node name="baddie" type="RigidBody2D"]
+position = Vector2(283, 277)
+continuous_cd = 1
+contact_monitor = true
+script = ExtResource("1_oauma")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_a1pef")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(14, 0)
+scale = Vector2(1, 0.1)
+texture = SubResource("GradientTexture2D_ck1d1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mg2vl")

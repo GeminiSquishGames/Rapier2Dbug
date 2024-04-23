@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://lynr80a8m3au"]
+
+[sub_resource type="Gradient" id="Gradient_sqc1l"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.540425, 1)
+colors = PackedColorArray(1, 0.667307, 0.654101, 1, 0.835415, 0.516511, 0.483371, 1, 0.460829, 0.242066, 0.219724, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ue08j"]
+gradient = SubResource("Gradient_sqc1l")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.844332, 0.185894)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fmnnc"]
+radius = 29.0172
+
+[node name="rock" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_ue08j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fmnnc")
