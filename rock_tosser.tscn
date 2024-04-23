@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcdda0omhl5jt"]
+
+[ext_resource type="Script" path="res://toss_rock.gd" id="1_mqse1"]
+[ext_resource type="Texture2D" uid="uid://bly5ynm0yvw64" path="res://ShortRound.tres" id="2_qmj84"]
+
+[node name="RockTosser" type="Node2D"]
+position = Vector2(2249, 1171)
+script = ExtResource("1_mqse1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.203922, 0.854902, 0.356863)
+position = Vector2(0, 2)
+texture = ExtResource("2_qmj84")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Rock Tosser"
+horizontal_alignment = 1
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="make_rock"]
