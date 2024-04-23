@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dgyfxy64vw1y0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6nhl4"]
-friction = 0.42
-bounce = 1.0
+friction = 0.28
+rough = true
+bounce = 0.84
 
 [sub_resource type="Gradient" id="Gradient_7lbu2"]
 interpolation_mode = 1

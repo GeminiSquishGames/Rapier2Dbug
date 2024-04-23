@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjnvmmcdjgbu6"
-path="res://.godot/imported/Node2D.svg-839688c6fcfc535aaba08e1eeebc9ec8.ctex"
+uid="uid://d07s4vua2vwft"
+path="res://.godot/imported/FastNoiseLiteShaderMaterial.svg-0a3c3e54d111ab0ef4484aa333375979.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/godot-rapier2d/Node2D.svg"
-dest_files=["res://.godot/imported/Node2D.svg-839688c6fcfc535aaba08e1eeebc9ec8.ctex"]
+source_file="res://addons/FastNoiseLiteRuntimeShader/FastNoiseLiteShaderMaterial.svg"
+dest_files=["res://.godot/imported/FastNoiseLiteShaderMaterial.svg-0a3c3e54d111ab0ef4484aa333375979.ctex"]
 
 [params]
 

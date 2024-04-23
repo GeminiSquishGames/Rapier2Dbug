@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://djxfwa4j56ewg"]
+
+[sub_resource type="Gradient" id="Gradient_7fvk6"]
+offsets = PackedFloat32Array(0.109574, 0.407447, 0.827659, 0.981915)
+colors = PackedColorArray(0.246801, 0.553884, 1, 1, 0.478723, 0.499647, 0.947068, 1, 0, 0.000236142, 0.129032, 1, 0, 0, 0.129412, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ddfsa"]
+seed = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_04jhm"]
+seamless = true
+seamless_blend_skirt = 0.463
+normalize = false
+color_ramp = SubResource("Gradient_7fvk6")
+noise = SubResource("FastNoiseLite_ddfsa")
+
+[sub_resource type="Gradient" id="Gradient_r44jw"]
+offsets = PackedFloat32Array(0.104255, 0.45, 0.609574, 0.737234)
+colors = PackedColorArray(0.229273, 0.540339, 0.709677, 1, 0, 0.00062409, 0.341014, 1, 0, 0.00048807, 0.294895, 0.782051, 0, 0, 0.129412, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hhp40"]
+seed = 5
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tcfrq"]
+seamless = true
+seamless_blend_skirt = 0.419
+normalize = false
+color_ramp = SubResource("Gradient_r44jw")
+noise = SubResource("FastNoiseLite_hhp40")
+
+[node name="Background" type="ParallaxBackground"]
+offset = Vector2(1024, 1024)
+transform = Transform2D(1, 0, 0, 1, 1024, 1024)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(2048, 2048)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+texture_repeat = 2
+scale = Vector2(0.5, 0.5)
+texture = SubResource("NoiseTexture2D_04jhm")
+region_enabled = true
+region_rect = Rect2(1.45519e-11, 1.45519e-11, 4096, 4096)
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.9, 0.9)
+motion_mirroring = Vector2(2048, 2048)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer2"]
+texture_repeat = 2
+scale = Vector2(2, 2)
+texture = SubResource("NoiseTexture2D_tcfrq")
+region_enabled = true
+region_rect = Rect2(1.45519e-11, 1.45519e-11, 1024, 1024)
+metadata/_edit_lock_ = true
