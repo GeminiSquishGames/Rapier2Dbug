@@ -120,9 +120,16 @@ texture = SubResource("GradientTexture2D_ck1d1")
 shape = SubResource("CircleShape2D_t8iwt")
 
 [node name="Shield" type="CollisionShape2D" parent="Player"]
+unique_name_in_owner = true
+process_mode = 4
 visible = false
 shape = SubResource("CircleShape2D_t8iwt")
 disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/Shield"]
+self_modulate = Color(0.137255, 0.933333, 1, 0.396078)
+scale = Vector2(1.84375, 2.46875)
+texture = ExtResource("3_wu23w")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true

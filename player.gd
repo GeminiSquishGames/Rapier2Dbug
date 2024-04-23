@@ -3,6 +3,7 @@ extends RigidBody2D
 var bullet = preload("res://bullet.tscn")
 var is_thrusting = false
 
+@onready var shield : CollisionShape2D = $Shield
 @onready var fire_delay : Timer = $FireDelay
 
 
@@ -34,6 +35,15 @@ func _input(event):
         is_thrusting = true
     else:
         is_thrusting = false
+
+    if Input.is_key_pressed(KEY_E):
+        shield.disabled = not shield.disabled
+        shield.visible = not shield.visible
+        if shield.disabled:
+            shield.process_mode = Node.PROCESS_MODE_DISABLED
+        else:
+            shield.process_mode = Node.PROCESS_MODE_ALWAYS
+
 
 
 
